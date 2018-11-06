@@ -34,13 +34,15 @@ class Perfume extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['Image',], 'required'],
             [['ID_Category', 'ID_Type_of_perfume', 'Views'], 'integer'],
             [['Price'], 'number'],
             [['Content'], 'string'],
-            [['Perfume_Name'], 'string', 'max' => 200],
-            [['Summary'], 'string', 'max' => 150],
+            [['Perfume_Name'], 'string'],
+            [['Summary'], 'string'],
             [['Discounts'], 'string', 'max' => 20],
-            [['Image_Link'], 'string', 'max' => 100],
+            [['Image'], 'string'],
+            //['Image'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg']
         ];
     }
 
@@ -50,16 +52,16 @@ class Perfume extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_Perfume' => 'Id  Perfume',
-            'ID_Category' => 'Id  Category',
-            'ID_Type_of_perfume' => 'Id  Type Of Perfume',
-            'Perfume_Name' => 'Perfume  Name',
-            'Price' => 'Price',
-            'Summary' => 'Summary',
-            'Content' => 'Content',
-            'Discounts' => 'Discounts',
-            'Image_Link' => 'Image  Link',
-            'Views' => 'Views',
+            'ID_Perfume' => 'Mã nước hoa',
+            'Perfume_Name' => 'Tên nước hoa',
+            'ID_Category' => 'Danh mục',
+            'ID_Type_of_perfume' => 'Loại nước hoa',
+            'Price' => 'Giá bán',
+            'Summary' => 'Mô tả',
+            'Content' => 'Nội dung',
+            'Discounts' => 'Giảm giá',
+            'Image' => 'Hình ảnh',
+            'Views' => 'Lượt xem',
         ];
     }
 }

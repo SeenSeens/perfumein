@@ -42,12 +42,12 @@ class Order extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_Order' => 'Id  Order',
-            'ID_Perfumes' => 'Id  Perfumes',
-            'Data' => 'Data',
-            'Quantity' => 'Quantity',
-            'Total_Money' => 'Total  Money',
-            'ID_Users' => 'Id  Users',
+            'ID_Order' => 'Mã đơn đặt hàng',
+            'ID_Perfumes' => 'Mã nước hoa',
+            'Data' => 'Dữ liệu',
+            'Quantity' => 'Số lượng',
+            'Total_Money' => 'Tổng số tiền',
+            'ID_Users' => 'Mã người dùng',
         ];
     }
 }

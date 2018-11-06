@@ -44,13 +44,13 @@ class Users extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_Users' => 'Id  Users',
-            'Full_Name' => 'Full  Name',
-            'Email' => 'Email',
-            'Phone_number' => 'Phone Number',
-            'Address' => 'Address',
-            'Password' => 'Password',
-            'Date_of_registration' => 'Date Of Registration',
+            'ID_Users' => 'Mã người dùng',
+            'Full_Name' => 'Họ tên',
+            'Email' => 'Thư điện tử',
+            'Phone_number' => 'Số điện thoại',
+            'Address' => 'Địa chỉ',
+            'Password' => 'Mật khẩu',
+            'Date_of_registration' => 'Ngày đăng ký',
         ];
     }
 }

@@ -40,10 +40,10 @@ class Admin extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_Admin' => 'Id  Admin',
-            'Full_Name' => 'Full  Name',
-            'Password' => 'Password',
-            'Role' => 'Role',
+            'ID_Admin' => 'ID Admin',
+            'Full_Name' => 'Họ tên',
+            'Password' => 'Mật khẩu',
+            'Role' => 'Vai trò',
         ];
     }
 }

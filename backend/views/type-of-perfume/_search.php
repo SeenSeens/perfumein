@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Name_of_perfume') ?>
 
-    <?= $form->field($model, 'ID_Genre') ?>
+    <?= $form->field($model, 'ID_Category') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

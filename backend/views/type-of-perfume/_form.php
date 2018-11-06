@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Name_of_perfume')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ID_Genre')->textInput() ?>
+    <?= $form->field($model, 'ID_Category')->dropDownlist($dataCategory) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

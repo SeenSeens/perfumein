@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $ID_Type_of_perfume
  * @property string $Name_of_perfume
- * @property int $ID_Genre
+ * @property int $ID_Category
  */
 class TypeOfPerfume extends \yii\db\ActiveRecord
 {
@@ -27,7 +27,7 @@ class TypeOfPerfume extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ID_Genre'], 'integer'],
+            [['ID_Category'], 'integer'],
             [['Name_of_perfume'], 'string', 'max' => 200],
         ];
     }
@@ -40,7 +40,16 @@ class TypeOfPerfume extends \yii\db\ActiveRecord
         return [
             'ID_Type_of_perfume' => 'Id  Type Of Perfume',
             'Name_of_perfume' => 'Name Of Perfume',
-            'ID_Genre' => 'Id  Genre',
+            'ID_Category' => 'Id  Category',
         ];
+    }
+
+    // Lấy ra tên loại nước hoa
+    public function getTypeOfPerfume()
+    {
+        $data = TypeOfPerfume::find()
+            ->asArray()
+            ->all();
+        return $data;
     }
 }

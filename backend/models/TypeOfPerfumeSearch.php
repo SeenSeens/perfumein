@@ -18,7 +18,7 @@ class TypeOfPerfumeSearch extends TypeOfPerfume
     public function rules()
     {
         return [
-            [['ID_Type_of_perfume', 'ID_Genre'], 'integer'],
+            [['ID_Type_of_perfume', 'ID_Category'], 'integer'],
             [['Name_of_perfume'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class TypeOfPerfumeSearch extends TypeOfPerfume
         // grid filtering conditions
         $query->andFilterWhere([
             'ID_Type_of_perfume' => $this->ID_Type_of_perfume,
-            'ID_Genre' => $this->ID_Genre,
+            'ID_Category' => $this->ID_Category,
         ]);
 
         $query->andFilterWhere(['like', 'Name_of_perfume', $this->Name_of_perfume]);

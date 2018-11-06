@@ -9,6 +9,13 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\widgets\headertopareaWidget;
+use frontend\widgets\mainmenuareaWidget;
+use frontend\widgets\sliderwrapWidget;
+use frontend\widgets\promotionareaWidget;
+use frontend\widgets\featuresareaWidget;
+use frontend\widgets\saleproductareaWidget;
+use frontend\widgets\footertopareaWidget;
 
 AppAsset::register($this);
 ?>
@@ -24,59 +31,75 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
-<?php $this->beginBody() ?>
+<?php $this->beginBody([
+        //'class' => 'home-5 home-6',
+        'options' => ['class' => 'home-5', 'home-6'],
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+]) ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+<!-- header start -->
+<header>
+    <!-- header-top-area start -->
+    <?= headertopareaWidget::widget(); ?>
+    <!-- header-top-area end -->
+    <!-- mainmenu-area start -->
+    <?= mainmenuareaWidget::widget(); ?>
+    <!-- mainmenu-area end -->
+</header>
+<!-- header end -->
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+<!-- HOME SLIDER -->
+<?= sliderwrapWidget::widget(); ?>
+<!-- HOME SLIDER END -->
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
+<!-- promotion-area start -->
+<?= promotionareaWidget::widget(); ?>
+<!-- promotion-area end -->
+
+<!-- features-area start -->
+<?= featuresareaWidget::widget(); ?>
+<!-- features-area end -->
+
+<!-- sale-product-area start -->
+<?= saleproductareaWidget::widget() ?>
+<!-- sale-product-area end -->
+
+<!-- category-area start -->
+
+<!-- category-area end -->
+<!-- banner-area start -->
+
+<!-- banner-area end -->
+<!-- recent-post-area start -->
+
+<!-- recent-post-area end -->
+<!-- brand-area start -->
+
+<!-- brand-area end -->
+<!-- corporate-about-area start -->
+
+<!-- corporate-about-area end -->
+
+<!-- footer start -->
+<footer>
+    <!-- footer-top-area start -->
+    <?= footertopareaWidget::widget() ?>
+    <!-- footer-top-area end -->
+    <!-- footer-middle-area start -->
+
+    <!-- footer-middle-area end -->
+    <!-- footer-bootom-area start -->
+
+    <!-- footer-bootom-area end -->
 </footer>
+<!-- footer end -->
 
+<!-- QUICKVIEW PRODUCT -->
+
+<!-- END QUICKVIEW PRODUCT -->
+
+
+<!-- header end -->
 <?php $this->endBody() ?>
 </body>
 </html>

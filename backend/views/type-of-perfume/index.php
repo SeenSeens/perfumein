@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'ID_Type_of_perfume',
             'Name_of_perfume',
-            'ID_Genre',
+            'ID_Category',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

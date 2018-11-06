@@ -19,7 +19,7 @@ class PerfumeSearch extends Perfume
     {
         return [
             [['ID_Perfume', 'ID_Category', 'ID_Type_of_perfume', 'Views'], 'integer'],
-            [['Perfume_Name', 'Summary', 'Content', 'Discounts', 'Image_Link'], 'safe'],
+            [['Perfume_Name', 'Summary', 'Content', 'Discounts', 'Image'], 'safe'],
             [['Price'], 'number'],
         ];
     }
@@ -71,7 +71,7 @@ class PerfumeSearch extends Perfume
             ->andFilterWhere(['like', 'Summary', $this->Summary])
             ->andFilterWhere(['like', 'Content', $this->Content])
             ->andFilterWhere(['like', 'Discounts', $this->Discounts])
-            ->andFilterWhere(['like', 'Image_Link', $this->Image_Link]);
+            ->andFilterWhere(['like', 'Image', $this->Image]);
 
         return $dataProvider;
     }
