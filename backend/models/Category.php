@@ -36,8 +36,17 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_Category' => 'Id  Category',
-            'Category_name' => 'Category Name',
+            'ID_Category' => 'Mã danh mục',
+            'Category_name' => 'Tên danh mục',
         ];
+    }
+
+    // Lấy ra tên danh mục
+    public function getNameCategory()
+    {
+        $data = Category::find()
+            ->asArray()
+            ->all();
+        return $data;
     }
 }

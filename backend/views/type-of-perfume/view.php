@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'ID_Type_of_perfume',
             'Name_of_perfume',
-            'ID_Genre',
+            'ID_Category',
         ],
     ]) ?>
 

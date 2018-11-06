@@ -8,16 +8,21 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="category-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'Category_name')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Danh mục</h3>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
+    <div class="panel-body">
+        <div class="category-form">
+            <?php $form = ActiveForm::begin(); ?>
+            <?= $form->field($model, 'Category_name')->textInput(['maxlength' => true]) ?>
+            <div class="form-group">
+                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            </div>
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
 </div>
+
+
+

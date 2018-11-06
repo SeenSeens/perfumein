@@ -41,11 +41,11 @@ class Transaction extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID_Transaction' => 'Id  Transaction',
-            'Status' => 'Status',
-            'ID_Users' => 'Id  Users',
-            'Full_Name' => 'Full  Name',
-            'Email' => 'Email',
+            'ID_Transaction' => 'Mã giao dịch',
+            'Status' => 'Trạng thái',
+            'ID_Users' => 'Mã người dùng',
+            'Full_Name' => 'Họ tên',
+            'Email' => 'Thư điện tử',
         ];
     }
 }

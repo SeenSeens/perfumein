@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'Discounts') ?>
 
-    <?php // echo $form->field($model, 'Image_Link') ?>
+    <?php // echo $form->field($model, 'Image') ?>
 
     <?php // echo $form->field($model, 'Views') ?>
 

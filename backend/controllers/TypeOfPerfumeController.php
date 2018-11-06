@@ -5,9 +5,11 @@ namespace backend\controllers;
 use Yii;
 use backend\models\TypeOfPerfume;
 use backend\models\TypeOfPerfumeSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Category;
 
 /**
  * TypeOfPerfumeController implements the CRUD actions for TypeOfPerfume model.
@@ -65,13 +67,17 @@ class TypeOfPerfumeController extends Controller
     public function actionCreate()
     {
         $model = new TypeOfPerfume();
-
+        $category = new Category();
+        $dataCategory = ArrayHelper::map($category->getNameCategory(), "ID_Category", "Category_name");
+//        echo "<pre>";
+//        print_r($dataCategory);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->ID_Type_of_perfume]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'dataCategory' => $dataCategory
         ]);
     }
 

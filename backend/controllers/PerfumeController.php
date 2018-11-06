@@ -8,6 +8,10 @@ use backend\models\PerfumeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Category;
+use yii\helpers\ArrayHelper;
+use backend\models\TypeOfPerfume;
+use yii\web\UploadedFile;
 
 /**
  * PerfumeController implements the CRUD actions for Perfume model.
@@ -65,14 +69,35 @@ class PerfumeController extends Controller
     public function actionCreate()
     {
         $model = new Perfume();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID_Perfume]);
+        // Lấy ra tên danh mục
+        $category = new Category();
+        $dataCategory = ArrayHelper::map($category->getNameCategory(), "ID_Category", "Category_name");
+        // Lấy ra tên loại danh mục
+        $typeofperfume = new TypeOfPerfume();
+        $dataTypeofperfume = ArrayHelper::map($typeofperfume->getTypeOfPerfume(), "ID_Type_of_perfume", "Name_of_perfume");
+        if ($model->load(Yii::$app->request->post())) {
+            $model->Image = UploadedFile::getinstance($model, 'Image');
+            if ($model->Image) {
+                $model->Image->saveAs('../../uploads/images/' . $model->Image->name);
+                $model->Image = $model->Image->name;
+            }
+            if ($model->save(false)) {
+                Yii::$app->session->addFlash('success', 'Thêm mới thành công');
+                return $this->redirect(['view', 'id' => $model->ID_Perfume]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                    'dataCategory' => $dataCategory,
+                    'dataTypeofperfume' => $dataTypeofperfume
+                ]);
+            }
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+                'dataCategory' => $dataCategory,
+                'dataTypeofperfume' => $dataTypeofperfume
+            ]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -85,13 +110,29 @@ class PerfumeController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID_Perfume]);
+        // Lấy ra tên danh mục
+        $category = new Category();
+        $dataCategory = ArrayHelper::map($category->getNameCategory(), "ID_Category", "Category_name");
+        // Lấy ra tên loại danh mục
+        $typeofperfume = new TypeOfPerfume();
+        $dataTypeofperfume = ArrayHelper::map($typeofperfume->getTypeOfPerfume(), "ID_Type_of_perfume", "Name_of_perfume");
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->addFlash('success', 'Cập nhật sách thành công');
+                return $this->redirect(['view', 'id' => $model->ID_Perfume]);
+            } else {
+                Yii::$app->session->addFlash('danger', 'Cập nhật sách thất bại');
+                return $this->render('update', [
+                    'model' => $model,
+                    'dataCategory' => $dataCategory,
+                    'dataTypeofperfume' => $dataTypeofperfume
+                ]);
+            }
         }
-
         return $this->render('update', [
             'model' => $model,
+            'dataCategory' => $dataCategory,
+            'dataTypeofperfume' => $dataTypeofperfume
         ]);
     }
 
